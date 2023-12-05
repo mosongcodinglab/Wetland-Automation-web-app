@@ -1,0 +1,415 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <title>WetLands Automation</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    <meta name="author" content=""> {% load static %}
+<style>
+
+  .scroll {
+    max-height: 600px;
+    overflow-y: scroll;
+    width: 250px
+  }
+  label{
+    color:black;
+  }
+</style>
+    
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    
+    <link rel="stylesheet" href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{%static 'lib/animate/animate.min.css' %}">
+
+
+
+    <link rel="stylesheet" href="{% static 'style2.css' %}">
+    <script>
+      {{ map.header.render|safe }}
+      {{ MyField.header.render|safe }}
+      {{ Acres.header.render|safe }} 
+      {{ Hectares.header.render|safe }} 
+      {{ Kilometers.header.render|safe }} 
+      {{ areameters.header.render|safe }}
+      {{ Sentinel_Imagery.header.render|safe }}
+      {{ Sentinel_Imagery_1.header.render|safe }}
+      {{ Landsat8_Imagery.header.render|safe }}
+      {{ Wetlands.header.render|safe }}
+      {{ NDVI.header.render|safe }}
+      {{ NDWI.header.render|safe }}
+      {{JRC_Gloabal_Surface_Water.header.render|safe}}
+      {{MyField2.header.render|safe}}
+      {{MyField3.header.render|safe}}
+      {{ MNDWI.header.render|safe }}
+      {{LULC.header.render|safe}}
+
+
+     </script> 
+      <!-- Libraries Stylesheet -->
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+
+    <!-- Template Stylesheet -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+</head>
+
+<body>
+ <!-- Spinner Start -->
+ <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+<!-- Spinner End -->
+
+
+<!-- Navbar Start -->
+<nav class="navbar navbar-expand-lg bg-white navbar-light shadow border-top border-1 border-light sticky-top p-0">
+    {% comment %} <!-- <a href="index.html" class="navbar-brand bg-light d-flex align-items-center px-4 px-lg-5"></a> --> {% endcomment %}
+    <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    
+        <div class="navbar-nav" style="background-color:black; width: 100%">
+          
+            <div class="nav-item dropdown" style="color:red;">
+                <a class="navbar-brand" id="menu-toggle" href="#">
+                    <div style="margin-left: 12px">
+
+                    <i class="fa fa-bars fa-2x" style="color:white"></i>
+                    <br>
+                    <small style="font-size:12px; color:white">Menu</small> 
+                    </div>
+                </a>                    
+                
+                <div class="dropdown-menu fade-up m-0">
+                  <div class="scroll" style="font-size:12px">
+
+                    <li>
+                        <a  style="font-size:18px" href="" class="dropdown-item"><i class="fa fa-fw fa-home fa-m-fix"></i> Wetlands Ecosystem</a>
+                    </li>
+                    <li>
+                        <hr class="sidebar-hr">
+                    </li>
+                    <li style="font-size:18px" class="sidebar-sub-brand">
+                        <a href="<%= efarmxURL %>" class="dropdown-item"><i class="fa fa-fw fa-indent fa-m-fix text-primary me-1"></i>Quick Links</a>
+                    </li>
+                    <li>
+                        <a href="" class="dropdown-item"><i class="fa fa-fw fa-calculator fa-m-fix text-info">Fast links</i></a>
+                    </li>
+                
+                    <li>
+                        <hr class="sidebar-hr sidebar-short">
+                    </li>
+
+
+                    
+                    <li class="sidebar-sub-brand">
+                        <a style="font-size:18px" href=""class="dropdown-item"><i class="fa fa-fw fa-indent fa-m-fix text-primary me-1"></i>Manual</a>
+                    </li>
+                    <li>
+                        <a href="" class="dropdown-item"><i class="fa fa-fw fa-map-marker fa-m-fix text-info"></i>Learn more</a>
+                   
+                   
+                    <li>
+                        <hr class="sidebar-hr sidebar-short">
+                    </li>
+                    <li class="sidebar-sub-brand">
+                        <a style="font-size:18px" href="" class="dropdown-item"><i class="fa fa-fw fa-indent fa-m-fix text-primary me-1"></i>Analysis</a>
+                    </li>
+                    <li>
+                        <a href="" class="dropdown-item"><i class="fa fa-fw fa-balance-scale fa-m-fix text-info"></i>Fast interperetion</a>
+                    </li>
+
+                    <li>
+                        <hr class="sidebar-hr sidebar-short">
+                    </li>
+                    
+             
+                  
+              </div>
+                </div>
+            </div>
+
+            
+        <!-- </div> -->
+
+
+            <a class="navbar-brand navbar-brand-fa-fix" style="font-size: 14px;margin-left:11px; color:white;" href="/">
+                Wetlands<small style="margin-top: 3px;">,ATM<br>Jerry<br>Kevo <sup>TM</sup></small>
+            </a>
+            <div class="nav-item dropdown">
+              <li>
+                <a href="#"  class="nav-link" data-bs-toggle="dropdown"> <i class="fa fa-fw fa-indent text-info"></i>Manual<i class="fa fa-fw fa-caret-down"></i></a> 
+              </li>
+
+                <div class="dropdown-menu fade-up m-0">
+                  <li>
+                    <a href="http://localhost:8081/accounts/show" class="dropdown-item"><i class="fa fa-fw fa-line-chart text-success me-2"></i>Learn more</a>
+                  </li>
+                  <br>
+                   
+                  <li>
+                    <a href="" class="dropdown-item"><i class="fa fa-fw fa-calculator text-success me-2"></i>Satelite analysis</a>
+                  </li>
+                  <br>
+
+                  <li>
+                    <a href="" class="dropdown-item"><i class="fa fa-fw fa-database text-success me-2"></i>Quick Acess</a>
+                  </li> 
+                  <br>
+
+                </div>
+            </div>
+
+            <div class="nav-item dropdown">
+                <a href="#"  class="nav-link" data-bs-toggle="dropdown"> <i class="fa fa-fw fa-indent text-info"></i>Quick Links <i class="fa fa-fw fa-caret-down"></i></a> 
+                <div class="dropdown-menu fade-up m-0">
+                  <li>
+                    <a href="#" class="dropdown-item"><i class="fa fa-fw fa-map-marker text-info me-2"></i>Home</a>
+                  </li>
+                  <br>
+
+                  <li>
+                    <a href="" class="dropdown-item"><i class="fa fa-fw fa-tasks text-info me-2"></i>Analysis</a>
+                  </li>
+                  <br>
+      
+
+                  <li>
+                    <a href="" class="dropdown-item"><i class="fa fa-fw fa-skyatlas text-info me-2"></i>Manual</a>
+                  </li>
+                  <br>
+
+                  <li>
+                    <a href="" class="dropdown-item"><i class="fa fa-fw fa-retweet text-info me-2"></i>GeoLocation</a>
+                  </li> 
+                  <br>
+
+            
+                </div>
+            </div>
+            <div class="nav-item dropdown">
+                <a href="#"  class="nav-link" data-bs-toggle="dropdown"> <i class="fa fa-fw fa-indent text-info"></i>Analysis <i class="fa fa-fw fa-caret-down"></i></a> 
+                <div class="dropdown-menu fade-up m-0">
+                  <li>
+                    <a href="{% url 'map'%}" class="dropdown-item"><i class="fa fa-fw fa-anchor text-success me-2"></i> Satellite Analysis</a>
+                  </li> 
+                  <br>  
+                  <li>
+                    <a href="#" class="dropdown-item"><i class="fa fa-fw fa-users text-success me-2"></i> 3D Terrain Analysis</a>
+                  </li> 
+                  <br> 
+                            
+                  <li>
+                    <a href="" class="dropdown-item"><i class="fa fa-fw fa-flask text-success me-2"></i> GPS Monitor</a>
+                  </li>
+
+                </div>
+            </div>
+
+
+
+
+          <div  style="margin-left: 520px;">
+            <div class="navbar-nav">
+              <div class="nav-item dropdown" >
+                  <a class="navbar-brand" id="menu-toggle" href="#">
+                      <div style="margin-left:12px; color: white">
+                      {% comment %} <i class="fa fa-plus fa-2x"></i> {% endcomment %}
+                      <br>
+                      {% comment %} <small style="font-size:12px; margin-left:0px;color: white">New</small> {% endcomment %}
+                      </div>
+                  </a>                    
+                  
+              <div class="dropdown-menu fade-up m-0">
+                    {% comment %} <a href="feature.html" class="dropdown-item">Features</a>
+                    <a href="team.html" class="dropdown-item">Our Team</a>
+                    <a href="testimonial.html" class="dropdown-item">Testimonial</a> {% endcomment %}
+          </div>
+      </div>
+
+
+          <div class="navbar-nav">
+              <div class="nav-item dropdown" style="margin-left: 20px;">
+                  <a class="navbar-brand" id="menu-toggle" href="#">
+                      <div style="margin-left: 12px; color: white">
+                        
+                          <i class="fa fa-solid fa-user fa-2x"></i>
+                       <br>
+                      <small style="font-size:12px; margin-left:0px; color: white">User</small>
+                      </div>
+                  </a>                    
+                  
+              <div class="dropdown-menu fade-up m-0">
+        
+          </div>
+      </div>
+    </div>
+
+</nav>
+<!-- Navbar End -->
+
+
+<div class="titlesection">
+    <h3> <span class="mapsection">Satellite Imagery</span>  <span class="Analysissection">Imagery Analysis</span></h3> 
+  </div> 
+
+    <div class="maparea">
+      {{map.html.render|safe}}
+      {{MyField.html.render|safe}}
+      {{areameters.html.render|safe}}
+      {{Acres.html.render|safe}}
+      {{Hectares.html.render|safe}}
+      {{Kilometers.html.render|safe}} 
+      {{Sentinel_Imagery.html.render|safe}}
+      {{Sentinel_Imagery_1.html.render|safe}}
+      {{Landsat8_Imagery.html.render|safe}}
+      {{Wetlands.html.render|safe}}
+      {{NDVI.html.render|safe}}
+      {{NDWI.html.render|safe}}
+      {{JRC_Gloabal_Surface_Water.html.render|safe}}
+      {{MyField2.html.render|safe}}
+      {{MyField3.html.render|safe}}
+      {{MNDWI.html.render|safe}}
+      {{LULC.html.render|safe}}
+    
+    </div>
+    <h3 style="color: green; position:absolute;  z-index: 9999; margin-left:390px; margin-top:15px">{{ sucess_message }}</h3>
+    <h3 style="color: red; position:absolute;  z-index: 9999; margin-left:390px; margin-top:15px">{{ error_message }}</h3>
+  
+  <!--compenents start-->
+  <div class="compenents">
+
+  <!--Region Select start-->
+  <label style="color: white" for="Selectregion_dropdown">Field | Area</label><br>
+  <select class="drop_select" onchange="location = this.value;">
+        <option value="" selected disabled> Select Region/Field</option>
+        <option value="{% url 'MyField' %}">Ewaso Nyiro</option>
+        <option value="{% url 'MyField2' %}">Siaya</option>
+        <option value="{% url 'MyField3' %}">Homa Bay</option>
+      </select>
+      <br>
+      <br>
+  
+  <!--Region Select End-->
+  <label style="color: white" >Area Measured:</label><br>
+  {% comment %} <p>Age: {{ Total_AreaSqKm }}</p> {% endcomment %}
+  
+  <textarea style="background:black; color:white" rows="1" cols="33" readonly>{{ areaestimate1 }}</textarea>
+  <br>
+  <br>
+  <!--Area Units (Auto selects) start-->
+      <label style="color: white"  for="Area_Units_dropdown">Area Unit (Auto selects):</label><br>
+      <select class="drop_select" onchange="location = this.value;">
+        <option selected disabled>Select Area Unit</option>
+        <option value="{% url 'areameters' %}">Meters</option>
+        <option value="{% url 'Acres' %}">Acres(s)</option>
+        <option value="{% url 'Hectares' %}">Hectares</option>
+        <option value="{% url 'Kilometers' %}">Kilometers</option>      
+      </select>
+      <br>
+      <br>
+  <!--Area Units (Auto selects) End-->
+  
+
+  <!--Date Range Start-->
+  <label style="color: white"  for="DateRange_dropdown">Date Range:</label><br>
+  <form  style="background:black;width: 100px" method="post">
+    {% csrf_token %}
+    {{ form.as_table }}
+    <p><input style="color:black" type="submit" value="Selected"></p>
+  </form>
+  <br>
+  <!--Date Range End-->
+  
+  
+  <!--Satellite Datastart-->
+  <label style="color: white"  for="Satelite_Data_dropdown">Satellite Data:</label><br>
+  <select style="background: black; color:white" class="drop_select" onchange="location = this.value;">
+    <option value="" >Select Satelite Data</option>
+    <option value="{% url 'Sentinel_Imagery' %}">Sentinel 2 10m resolution/5 days</option>
+    <option value="{% url 'Sentinel_Imagery_1' %}">Sentinel 1 10m resolution/5 days</option>
+    <option value="{% url 'Landsat8_Imagery' %}">Landsat 8 30m resolution/ 14 days</option>
+  </select>
+
+
+
+
+  <br>
+  <br>
+  <!--Satellite Data End-->
+  
+  <!--Variable/spectral analysis start-->
+      <label style="color: white"  for="spectral_dropdown">Variable Analysis Tools</label>
+      <select class="drop_select" onchange="location = this.value;">
+        <option value="" selected disabled>Variable Analysis Tools</option>
+        <option value="{% url 'NDVI' %}">NDVI(Normalized Difference Vegetation Index)</option>
+        <option value="{% url 'NDWI' %}">NDWI(Normalized Difference Water Index)</option>
+        <option value="{% url 'MNDWI' %}">MNDWI(Modified Normalized Difference Water Index)</option>
+        <option value="{% url 'JRC_Gloabal_Surface_Water' %}">JRC Gloabal Surface Water</option>
+        <option value="{% url 'LULC' %}">LULC(LandCover & LandUse)</option>
+        <option value="{% url 'Wetlands' %}">Sample out Wetland</option>
+
+      </select>
+    <br>
+    <br>
+  <!--Variable/spectral analysis End-->
+  
+  {% comment %} <label style="color: white"  for="Analysis_dropdown">Analysis Chart:</label><br> {% endcomment %}
+  
+
+</div>
+  <!--compenents End-->
+  
+    <script>
+      {{ map.script.render|safe }}
+      {{ MyField.script.render|safe }}
+      {{ areameters.script.render|safe }}
+      {{ Acres.script.render|safe }}
+      {{ Hectares.script.render|safe }}
+      {{ Kilometers.script.render|safe }} 
+      {{ Sentinel_Imagery.script.render|safe }}
+      {{ Sentinel_Imagery_1.script.render|safe }}
+      {{ Landsat8_Imagery.script.render|safe }} 
+      {{ Wetlands.script.render|safe }}  
+      {{ NDVI.script.render|safe }}
+      {{ NDWI.script.render|safe }}  
+      {{JRC_Gloabal_Surface_Water.script.render|safe}}
+      {{MyField2.script.render|safe}}
+      {{MyField3.script.render|safe}}
+      {{ MNDWI.script.render|safe }}  
+      {{LULC.script.render|safe}}
+
+  
+      
+    </script>
+<!-- JavaScript Libraries -->
+<script src="static/lib/wow/wow.min.js"></script>
+<script src="static/lib/easing/easing.min.js"></script>
+<script src="static/lib/waypoints/waypoints.min.js"></script>
+<script src="static/lib/counterup/counterup.min.js"></script>
+<script src="static/lib/owlcarousel/owl.carousel.min.js"></script>
+
+<!-- Template Javascript -->
+<script src="static/js/main.js"></script>
+</body>
+
+</html>
